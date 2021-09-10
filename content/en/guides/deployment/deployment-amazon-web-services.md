@@ -268,7 +268,7 @@ gulp.task('deploy', function () {
   // publisher will add Content-Length, Content-Type and headers specified above
   // If not specified it will set x-amz-acl to public-read by default
   g = g.pipe(
-    parallelize(publisher.publish(config.headers), config.concurrentUploads)
+    parallelize(publisher.publish(config.headers,{noAcl:true}), config.concurrentUploads)
   )
 
   // Invalidate CDN
